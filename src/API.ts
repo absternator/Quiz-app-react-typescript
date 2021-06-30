@@ -6,9 +6,13 @@ export enum Difficulty {
 }
 export enum Catagory {
   General = 9,
-  ScienceAndNature = 17,
+  ScienceNature = 17,
+  Science_Computers = 18,
   Sports = 21,
   Geography = 22,
+  Animals = 27,
+  Celebreties = 26,
+  Entertainment_VideoGames = 15,
 }
 export interface QuestionFormat {
   catagory: string;
