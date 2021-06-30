@@ -1,6 +1,6 @@
 # Quizz App in React-typescript
 
-### Site Hosted using firebase and can be found [https://anmolsquizz.web.app]here
+### Site Hosted using firebase and can be found [here](https://anmolsquizz.web.app)
 
 #### Opentb Trivia API used for questions and answers of Quiz
 
