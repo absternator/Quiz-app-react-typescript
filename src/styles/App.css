@@ -20,7 +20,8 @@ body {
   flex-direction: column;
   align-items: center;
 }
-.app > p {
+.app > p,
+h3 {
   color: #fff;
 }
 .score {
@@ -47,8 +48,8 @@ h1 {
 .start,
 .next {
   cursor: pointer;
-  background: linear-gradient(180deg, #fff, #ffcc91);
-  border: 2px solid #d38558;
+  background: linear-gradient(180deg, rgb(161, 158, 158), #f0ba7c);
+  border: 2px solid #ee935e;
   border-radius: 10px;
   height: 40px;
   margin: 20px 0;

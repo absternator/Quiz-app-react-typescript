@@ -21,8 +21,8 @@ export interface QuestionFormat {
 export type QuestionState = QuestionFormat & { answers: string[] };
 export async function fetchQuestions(
   amount: number,
-  difficulty: Difficulty,
-  catagory: Catagory = 9
+  difficulty: string,
+  catagory: string
 ): Promise<QuestionState[]> {
   const endpoint = `https://opentdb.com/api.php?amount=${amount}&category=${catagory}&difficulty=${difficulty}&type=multiple`;
   const data: { results: Array<QuestionFormat> } = await (

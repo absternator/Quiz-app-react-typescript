@@ -5,6 +5,7 @@ import { fetchQuestions, Difficulty, Catagory, QuestionState } from "./API";
 //styles
 //import { GlobalStyle, Wrapper} from "./App.styles"; // can do like this or import app .styles
 import "./styles/App.css";
+import StartingForm from "./Components/StartingForm";
 
 export interface AnswerObj {
   question: string;
@@ -13,6 +14,7 @@ export interface AnswerObj {
   correctAnswer: string;
 }
 const App = () => {
+  // consts
   const TOTAL_QUESTIONS = 10;
   //States
   const [loading, setLoading] = useState<boolean>(false);
@@ -25,15 +27,15 @@ const App = () => {
   /**
    * start trivia game by fetching from API and refreshing all states
    */
-  async function startTrivia() {
+  async function startTrivia(catagory: Catagory, difficulty: Difficulty) {
+    const cat: string = Catagory[catagory];
+    const dif: string = difficulty.toLocaleLowerCase();
+    console.log(cat);
+    console.log(dif);
     setLoading(true);
     setGameOver(false);
     // await promise to be fufilled
-    const new_qs = await fetchQuestions(
-      TOTAL_QUESTIONS,
-      Difficulty.EASY,
-      Catagory.ScienceAndNature
-    );
+    const new_qs = await fetchQuestions(TOTAL_QUESTIONS, dif, cat);
     setQuestions(new_qs);
     setScore(0);
     setUserAnswers([]);
@@ -77,14 +79,11 @@ const App = () => {
       <div className="app">
         <h1>Anmols Quiz Show</h1>
         {(gameOver || userAnswers.length === 10) && (
-          <button className="start" onClick={startTrivia}>
-            {" "}
-            Start Quiz
-          </button>
+          <StartingForm startTrivia={startTrivia} />
         )}
         {!gameOver && <p className="score">Score: {score}</p>}
         {loading && <p>Loading the Question...</p>}
-        {!loading && !gameOver && (
+        {!loading && !gameOver && userAnswers.length !== TOTAL_QUESTIONS && (
           <QuestionCard
             questionNumber={number + 1}
             totalQuestions={TOTAL_QUESTIONS}
@@ -102,6 +101,13 @@ const App = () => {
               Next Question
             </button>
           )}
+        {userAnswers.length === TOTAL_QUESTIONS && (
+          <h3>
+            {" "}
+            Great game!!! Pick catagories and difficulties again to start new
+            game
+          </h3>
+        )}
       </div>
     </>
   );
