@@ -1,9 +1,12 @@
 # Quizz App in React-typescript
 
+### Site Hosted using firebase and can be found [https://anmolsquizz.web.app]here
+
+#### Opentb Trivia API used for questions and answers of Quiz
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Available Scripts for development
 
 In the project directory, you can run:
 
